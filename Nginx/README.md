@@ -1,4 +1,4 @@
-# 🏫 Senior Secondary School Tamber — Website
+# 🏫 Government Senior Secondary School Tamber — Website
 
 Professional 5-page school website built with pure HTML, CSS & JavaScript.  
 Teen alag files mein structured — aasaan customization ke liye.
