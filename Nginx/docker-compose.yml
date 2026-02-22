@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  nginx:
+    build: 
+      context: .
+    container_name: Web_Gsss
+    ports:
+      - "89:80"
+
+
+
