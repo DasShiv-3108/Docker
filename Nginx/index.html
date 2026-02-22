@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Senior Secondary School Tamber</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <!-- ─── Saari CSS yahan se aati hai ─── -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAVBAR
+     ════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">
+    <div class="emblem">S</div>
+    <span>Senior Secondary<br>School Tamber</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#" class="active" onclick="showPage('home', this)">Home</a></li>
+    <li><a href="#" onclick="showPage('about', this)">About</a></li>
+    <li><a href="#" onclick="showPage('classes', this)">Classes</a></li>
+    <li><a href="#" onclick="showPage('admission', this)">Admission</a></li>
+    <li><a href="#" onclick="showPage('contact', this)">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 1: HOME
+     ════════════════════════════════════════════ -->
+<div id="home" class="page active">
+
+  <section class="hero">
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+
+      <div class="hero-text">
+        <div class="tag">🏫 Est. 1985 · Tamber</div>
+        <h1>Shaping <em>Tomorrow's</em> Leaders Today</h1>
+        <p>Senior Secondary School Tamber is committed to providing quality education that builds character, knowledge, and skills for life.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('admission', document.querySelector('.nav-links a:nth-child(4)'))">Apply for Admission</button>
+          <button class="btn-secondary" onclick="showPage('about', document.querySelector('.nav-links a:nth-child(2)'))">Learn More</button>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card"><span class="num">1200+</span><span class="label">Students Enrolled</span></div>
+        <div class="stat-card"><span class="num">60+</span><span class="label">Qualified Teachers</span></div>
+        <div class="stat-card"><span class="num">38</span><span class="label">Years of Excellence</span></div>
+        <div class="stat-card"><span class="num">95%</span><span class="label">Board Pass Rate</span></div>
+        <div class="stat-card"><span class="num">10+</span><span class="label">Sports & Clubs</span></div>
+        <div class="stat-card"><span class="num">100%</span><span class="label">Safe Campus</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="notice-bar">
+    <span class="label">📢 Notice</span>
+    <p>Admissions for Session 2025–26 are now open. Last date to apply: 31 March 2025. &nbsp;|&nbsp; Annual Sports Day on 15 February 2025.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Why Choose Us</span>
+      <h2>A School Built for Excellence</h2>
+      <p>We offer a nurturing environment with modern infrastructure and dedicated educators.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🖥️</div><h3>Smart Classrooms</h3><p>All classrooms equipped with interactive digital boards and modern teaching aids for enhanced learning.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔬</div><h3>Science Laboratories</h3><p>Fully equipped Physics, Chemistry and Biology labs for hands-on practical learning experience.</p></div>
+      <div class="feature-card"><div class="feature-icon">📚</div><h3>Rich Library</h3><p>A collection of 10,000+ books, magazines, and digital resources to support learning at every level.</p></div>
+      <div class="feature-card"><div class="feature-icon">🏃</div><h3>Sports Facilities</h3><p>Large sports ground with facilities for cricket, football, volleyball, and indoor games like TT and chess.</p></div>
+      <div class="feature-card"><div class="feature-icon">🎨</div><h3>Arts & Culture</h3><p>Music room, art studio, and regular cultural activities to develop creativity and expression in students.</p></div>
+      <div class="feature-card"><div class="feature-icon">🚌</div><h3>Transport Facility</h3><p>Safe and reliable school bus service covering all major areas of Tamber and surrounding villages.</p></div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 <strong>Senior Secondary School Tamber</strong>. All Rights Reserved.</footer>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 2: ABOUT
+     ════════════════════════════════════════════ -->
+<div id="about" class="page">
+
+  <div class="about-hero">
+    <h1>About <span>Our School</span></h1>
+    <p>A legacy of trust, discipline, and academic excellence spanning nearly four decades in Tamber.</p>
+  </div>
+
+  <div class="section">
+    <div class="about-grid">
+
+      <div class="about-text">
+        <h3>Our Story</h3>
+        <p>Senior Secondary School Tamber was established in 1985 with a vision to provide quality education to students of Tamber and surrounding areas. What began as a small school has grown into one of the region's most respected educational institutions.</p>
+        <p>We are affiliated with the Himachal Pradesh Board of School Education (HPBOSE) and follow the state curriculum with a strong emphasis on holistic development.</p>
+        <p>Our dedicated faculty, modern infrastructure, and student-centric approach make us the preferred choice for parents who want the best for their children.</p>
+        <div style="margin-top:32px;">
+          <h3>Principal's Message</h3>
+          <div style="background:var(--light);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:24px;margin-top:16px;">
+            <p style="font-style:italic;color:var(--navy);font-size:15px;line-height:1.8;">"Education is not just about marks — it is about building character, confidence, and compassion. At SSS Tamber, we strive to ensure every child reaches their full potential."</p>
+            <p style="margin-top:12px;font-weight:700;color:var(--navy);margin-bottom:0;">— Principal, SSS Tamber</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vmg-cards">
+        <div class="vmg-card"><h4>🎯 Our Vision</h4><p>To be a leading educational institution that produces well-rounded individuals with strong academic foundations, moral values, and the skills needed to thrive.</p></div>
+        <div class="vmg-card"><h4>🚀 Our Mission</h4><p>To deliver quality education through innovative teaching methods and provide a safe, inclusive learning environment for all students.</p></div>
+        <div class="vmg-card"><h4>⭐ Core Values</h4><p>Integrity, Discipline, Respect, Excellence, and Community — these values guide everything we do at SSS Tamber.</p></div>
+        <div class="vmg-card" style="border-left-color:var(--gold);"><h4>🏅 Accreditation</h4><p>Affiliated with HPBOSE. Recognised by Government of Himachal Pradesh. Classes 1–12 (Arts & Science streams).</p></div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:64px;">
+      <div class="section-header">
+        <span class="section-tag">Our Team</span>
+        <h2>Meet the Faculty</h2>
+        <p>Experienced, caring, and passionate educators dedicated to student success.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-avatar">👨‍💼</div><h4>Mr. Ramesh Sharma</h4><span>Principal</span></div>
+        <div class="team-card"><div class="team-avatar">👩‍🏫</div><h4>Mrs. Sunita Verma</h4><span>Vice Principal</span></div>
+        <div class="team-card"><div class="team-avatar">👨‍🔬</div><h4>Mr. Ajay Kumar</h4><span>Science HOD</span></div>
+        <div class="team-card"><div class="team-avatar">👩‍💻</div><h4>Mrs. Priya Thakur</h4><span>Mathematics HOD</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 <strong>Senior Secondary School Tamber</strong>. All Rights Reserved.</footer>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 3: CLASSES
+     ════════════════════════════════════════════ -->
+<div id="classes" class="page">
+
+  <div class="page-hero">
+    <h1>Classes & <span>Facilities</span></h1>
+    <p>From primary to senior secondary — comprehensive education with world-class facilities at every stage.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Infrastructure</span>
+      <h2>Our Facilities</h2>
+      <p>Modern infrastructure designed to create the best learning environment for every student.</p>
+    </div>
+
+    <div class="facility-grid">
+      <div class="facility-card"><div class="facility-thumb" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);">🖥️</div><div class="facility-body"><h3>Smart Class Rooms</h3><p>30 classrooms with interactive digital boards, projectors, and internet connectivity.</p></div></div>
+      <div class="facility-card"><div class="facility-thumb" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0);">🔬</div><div class="facility-body"><h3>Science Labs</h3><p>Separate Physics, Chemistry, and Biology labs with modern instruments and safety equipment.</p></div></div>
+      <div class="facility-card"><div class="facility-thumb" style="background:linear-gradient(135deg,#fef3c7,#fde68a);">💻</div><div class="facility-body"><h3>Computer Lab</h3><p>50-seat lab with high-speed internet and qualified instructors teaching digital literacy.</p></div></div>
+      <div class="facility-card"><div class="facility-thumb" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);">📚</div><div class="facility-body"><h3>School Library</h3><p>10,000+ books, magazines, newspapers, and digital e-library for senior students.</p></div></div>
+      <div class="facility-card"><div class="facility-thumb" style="background:linear-gradient(135deg,#ffe4e6,#fecdd3);">🏃</div><div class="facility-body"><h3>Sports Ground</h3><p>Cricket pitch, football ground, volleyball court, and athletics area.</p></div></div>
+      <div class="facility-card"><div class="facility-thumb" style="background:linear-gradient(135deg,#e0f2fe,#bae6fd);">🎭</div><div class="facility-body"><h3>Activity Hall</h3><p>Multipurpose hall for cultural programs, debates, annual functions, and competitions.</p></div></div>
+    </div>
+
+    <div style="margin-top:64px;">
+      <div class="section-header">
+        <span class="section-tag">Academics</span>
+        <h2>Class Structure</h2>
+        <p>We offer classes from 1st to 12th standard with dedicated faculty for each section.</p>
+      </div>
+      <div class="classes-list">
+        <div class="class-row header"><div>Class</div><div>Section / Stream</div><div>Subjects Offered</div><div>Strength</div></div>
+        <div class="class-row"><div><span class="class-badge">1–5</span></div><div>Primary (A, B)</div><div>English, Hindi, Maths, EVS, Art</div><div>60 students</div></div>
+        <div class="class-row"><div><span class="class-badge">6–8</span></div><div>Middle (A, B)</div><div>English, Hindi, Maths, Science, Social Science</div><div>70 students</div></div>
+        <div class="class-row"><div><span class="class-badge">9–10</span></div><div>Secondary (A, B)</div><div>English, Hindi, Maths, Science, SST, Sanskrit</div><div>80 students</div></div>
+        <div class="class-row"><div><span class="class-badge">11–12</span></div><div>Science Stream</div><div>Physics, Chemistry, Biology/Maths, English</div><div>50 students</div></div>
+        <div class="class-row"><div><span class="class-badge">11–12</span></div><div>Arts Stream</div><div>History, Geography, Political Sc., Economics, English</div><div>50 students</div></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2025 <strong>Senior Secondary School Tamber</strong>. All Rights Reserved.</footer>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 4: ADMISSION
+     ════════════════════════════════════════════ -->
+<div id="admission" class="page">
+
+  <div class="page-hero">
+    <h1>Admission <span>2025–26</span></h1>
+    <p>Join the SSS Tamber family. Admissions open for all classes. Apply before 31st March 2025.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">Process</span>
+      <h2>How to Apply</h2>
+      <p>Simple 4-step admission process. No entrance exam required for most classes.</p>
+    </div>
+
+    <div class="admission-steps">
+      <div class="step-card"><div class="step-num">1</div><h3>Fill the Form</h3><p>Complete the online inquiry form or collect from school office.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Submit Documents</h3><p>Submit marksheets, TC, Aadhar card, and photos.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Interaction</h3><p>Brief interaction of student and parents with admission committee.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Fee Payment</h3><p>Pay admission fee and confirm your seat. Welcome to SSS Tamber!</p></div>
+    </div>
+
+    <div class="admission-grid">
+
+      <div class="form-box">
+        <h3>Admission Inquiry Form</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Student's First Name</label><input type="text" placeholder="e.g. Rahul" /></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="e.g. Sharma" /></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Date of Birth</label><input type="date" /></div>
+          <div class="form-group">
+            <label>Applying for Class</label>
+            <select>
+              <option value="">Select Class</option>
+              <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+              <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+              <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+              <option>Class 10</option><option>Class 11 – Science</option>
+              <option>Class 11 – Arts</option><option>Class 12 – Science</option><option>Class 12 – Arts</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Parent / Guardian Name</label><input type="text" placeholder="Father's / Mother's name" /></div>
+        <div class="form-row">
+          <div class="form-group"><label>Mobile Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" /></div>
+          <div class="form-group"><label>Email (Optional)</label><input type="email" placeholder="example@mail.com" /></div>
+        </div>
+        <div class="form-group"><label>Address / Village</label><textarea placeholder="Your full address..."></textarea></div>
+        <button class="submit-btn">Submit Inquiry →</button>
+      </div>
+
+      <div>
+        <div class="fee-table">
+          <div class="fee-table-header"><h3>📋 Annual Fee Structure (2025–26)</h3></div>
+          <div class="fee-row"><span class="class-name">Class 1 – 5 (Primary)</span><span class="fee-amt">₹ 8,000 / year</span></div>
+          <div class="fee-row"><span class="class-name">Class 6 – 8 (Middle)</span><span class="fee-amt">₹ 10,000 / year</span></div>
+          <div class="fee-row"><span class="class-name">Class 9 – 10 (Secondary)</span><span class="fee-amt">₹ 12,500 / year</span></div>
+          <div class="fee-row"><span class="class-name">Class 11 – 12 (Sr. Secondary)</span><span class="fee-amt">₹ 15,000 / year</span></div>
+          <div class="fee-row"><span class="class-name">Transport (Optional)</span><span class="fee-amt">₹ 4,000 / year</span></div>
+          <div class="fee-row"><span class="class-name">Admission Form Fee</span><span class="fee-amt">₹ 200 (one-time)</span></div>
+        </div>
+        <div class="eligibility-box">
+          <h4>📄 Required Documents</h4>
+          <div class="elig-item">Previous class marksheet / Report Card</div>
+          <div class="elig-item">Transfer Certificate (TC) from previous school</div>
+          <div class="elig-item">Aadhar Card (Student + Parent)</div>
+          <div class="elig-item">4 passport-size photographs</div>
+          <div class="elig-item">Caste/Category certificate (if applicable)</div>
+          <div class="elig-item">Birth Certificate (for Class 1 admission)</div>
+          <div class="elig-item">Residence Proof (Ration Card / Voter ID)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>&copy; 2025 <strong>Senior Secondary School Tamber</strong>. All Rights Reserved.</footer>
+</div>
+
+
+<!-- ════════════════════════════════════════════
+     PAGE 5: CONTACT
+     ════════════════════════════════════════════ -->
+<div id="contact" class="page">
+
+  <div class="page-hero">
+    <h1>Contact <span>Us</span></h1>
+    <p>We'd love to hear from you. Reach out for admissions, queries, or feedback.</p>
+  </div>
+
+  <div class="section">
+    <div class="contact-grid">
+
+      <div class="contact-info-card">
+        <h3>Get in Touch</h3>
+        <p>Visit us, call us, or send a message. Our team is happy to help you.</p>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-item-text"><h4>Address</h4><p>Senior Secondary School Tamber,<br>Village Tamber, Tehsil – [Tehsil Name],<br>District – [District], Himachal Pradesh</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-item-text"><h4>Phone</h4><p>+91 98XXX XXXXX (Principal Office)<br>+91 97XXX XXXXX (Admission Cell)</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div class="contact-item-text"><h4>Email</h4><p>info@ssstamber.edu.in<br>admission@ssstamber.edu.in</p></div>
+        </div>
+        <div class="timing-box">
+          <div class="timing-row"><span>Monday – Friday</span><span>8:00 AM – 4:00 PM</span></div>
+          <div class="timing-row"><span>Saturday</span><span>8:00 AM – 1:00 PM</span></div>
+          <div class="timing-row"><span>Sunday</span><span>Closed</span></div>
+          <div class="timing-row"><span>Office Hours</span><span>9:00 AM – 3:00 PM</span></div>
+        </div>
+      </div>
+
+      <div class="contact-form-box">
+        <h3>Send a Message</h3>
+        <p>Fill out the form below and we'll get back to you within 1–2 working days.</p>
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input type="text" placeholder="Full name" /></div>
+          <div class="form-group"><label>Mobile Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" /></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" /></div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select>
+            <option>Admission Inquiry</option>
+            <option>Fee Related Query</option>
+            <option>Transport Inquiry</option>
+            <option>General Feedback</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Your Message</label><textarea placeholder="Write your message here..." style="min-height:130px;"></textarea></div>
+        <button class="submit-btn">Send Message →</button>
+        <div class="map-box">📍 Google Map — Village Tamber, HP</div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>&copy; 2025 <strong>Senior Secondary School Tamber</strong>. All Rights Reserved.</footer>
+</div>
+
+
+<!-- ─── Saara JavaScript yahan se aata hai ─── -->
+<script src="script.js"></script>
+
+</body>
+</html>
