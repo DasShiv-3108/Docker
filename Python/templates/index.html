@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Register</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --surface:  #111118;
+      --border:   #1e1e2e;
+      --accent:   #00ffc2;
+      --accent2:  #ff6b35;
+      --text:     #e8e8f0;
+      --muted:    #555570;
+      --error:    #ff4d6d;
+      --success:  #00ffc2;
+      --radius:   16px;
+      --font:     'Syne', sans-serif;
+      --mono:     'DM Mono', monospace;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      overflow-x: hidden;
+    }
+
+    /* ── Animated BG ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,255,194,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 90%, rgba(255,107,53,0.05) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Grid lines background ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,194,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,194,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    /* ── LEFT HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 50px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,255,194,0.08);
+      border: 1px solid rgba(0,255,194,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      width: fit-content;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -2px;
+      animation: fadeUp 0.6s ease 0.1s both;
+    }
+
+    .hero h1 span {
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-desc {
+      margin-top: 28px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      animation: fadeUp 0.6s ease 0.3s both;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero-deco {
+      position: absolute;
+      bottom: -60px;
+      left: -60px;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(0,255,194,0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-deco::before {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(0,255,194,0.05);
+      border-radius: 50%;
+    }
+
+    /* ── RIGHT FORM ── */
+    .form-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 50px;
+      animation: fadeUp 0.6s ease 0.2s both;
+    }
+
+    .form-header {
+      margin-bottom: 40px;
+    }
+
+    .form-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .form-header p {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .field:nth-child(1) { animation-delay: 0.3s; }
+    .field:nth-child(2) { animation-delay: 0.4s; }
+    .field:nth-child(3) { animation-delay: 0.5s; }
+    .field:nth-child(4) { animation-delay: 0.6s; }
+
+    label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    label .icon {
+      font-size: 14px;
+    }
+
+    input {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      font-family: var(--font);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      width: 100%;
+    }
+
+    input:focus {
+      border-color: var(--accent);
+      background: rgba(0,255,194,0.03);
+      box-shadow: 0 0 0 3px rgba(0,255,194,0.08), inset 0 0 20px rgba(0,255,194,0.02);
+    }
+
+    input::placeholder {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1) opacity(0.3);
+      cursor: pointer;
+    }
+
+    /* ── Submit Button ── */
+    .submit-btn {
+      margin-top: 32px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      border-radius: var(--radius);
+      padding: 18px 32px;
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.15s;
+      animation: fadeUp 0.5s ease 0.7s both;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.4s;
+    }
+
+    .submit-btn:hover::before { left: 100%; }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,255,194,0.35);
+    }
+
+    .submit-btn:active { transform: translateY(0); }
+
+    .submit-btn.loading {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      top: 28px;
+      right: 28px;
+      z-index: 999;
+      padding: 16px 24px;
+      border-radius: 12px;
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(120%);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      min-width: 280px;
+      border: 1px solid;
+    }
+
+    .toast.show { transform: translateX(0); }
+
+    .toast.success {
+      background: rgba(0,255,194,0.1);
+      border-color: rgba(0,255,194,0.3);
+      color: var(--success);
+    }
+
+    .toast.error {
+      background: rgba(255,77,109,0.1);
+      border-color: rgba(255,77,109,0.3);
+      color: var(--error);
+    }
+
+    /* ── Records Table ── */
+    .records-section {
+      margin-top: 40px;
+      animation: fadeUp 0.5s ease 0.8s both;
+    }
+
+    .records-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .records-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .refresh-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .refresh-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+
+    .table-wrap::-webkit-scrollbar { width: 4px; }
+    .table-wrap::-webkit-scrollbar-track { background: var(--surface); }
+    .table-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: var(--surface);
+      position: sticky;
+      top: 0;
+    }
+
+    th {
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text);
+      border-bottom: 1px solid rgba(30,30,46,0.5);
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr:hover td { background: rgba(0,255,194,0.02); }
+
+    .id-badge {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent);
+      background: rgba(0,255,194,0.08);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .page { grid-template-columns: 1fr; }
+      .hero { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 28px 36px; }
+      .form-side { padding: 36px 28px; }
+      .hero h1 { font-size: 42px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ── LEFT: HERO ── -->
+    <div class="hero">
+      <div class="hero-badge">DevOps Project</div>
+
+      <h1>
+        USER
+        <span>PROFILE</span>
+        REGISTER
+      </h1>
+
+      <p class="hero-desc">
+        # Two-Tier Architecture<br>
+        ┌─ Tier 1: Flask App (Frontend + Backend)<br>
+        └─ Tier 2: MySQL Database (Isolated)
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-val" id="total-count">—</div>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val" style="color:var(--accent2)">2</div>
+          <div class="stat-label">Tier App</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">MySQL</div>
+          <div class="stat-label">Database</div>
+        </div>
+      </div>
+
+      <div class="hero-deco"></div>
+    </div>
+
+    <!-- ── RIGHT: FORM ── -->
+    <div class="form-side">
+      <div class="form-header">
+        <h2>Create Your Profile</h2>
+        <p>// Fill in details — data MySQL mein store hoga</p>
+      </div>
+
+      <div class="field-group">
+        <div class="field">
+          <label><span class="icon">👤</span> Full Name</label>
+          <input type="text" id="full_name" placeholder="Apna poora naam likho..." autocomplete="off"/>
+        </div>
+
+        <div class="field">
+          <label><span class="icon">🎂</span> Date of Birth</label>
+          <input type="date" id="dob"/>
+        </div>
+
+        <div class="field">
+          <label><span class="icon">📍</span> Place of Birth</label>
+          <input type="text" id="place_of_birth" placeholder="Shahar / Gaon ka naam..." autocomplete="off"/>
+        </div>
+
+        <div class="field">
+          <label><span class="icon">🔢</span> Age</label>
+          <input type="number" id="age" placeholder="Years..." min="1" max="120"/>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+        ⚡ Save Profile to Database
+      </button>
+
+      <!-- Records Table -->
+      <div class="records-section">
+        <div class="records-header">
+          <span class="records-title">// Recent Profiles</span>
+          <button class="refresh-btn" onclick="loadUsers()">↻ Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>City</th>
+                <th>Age</th>
+              </tr>
+            </thead>
+            <tbody id="userTable">
+              <tr><td colspan="5" class="empty-state">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    function showToast(msg, type='success') {
+      const t = document.getElementById('toast');
+      t.className = `toast ${type} show`;
+      t.innerHTML = `<span>${type === 'success' ? '✓' : '✗'}</span> ${msg}`;
+      setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    async function submitForm() {
+      const btn = document.getElementById('submitBtn');
+      const data = {
+        full_name:      document.getElementById('full_name').value.trim(),
+        dob:            document.getElementById('dob').value,
+        place_of_birth: document.getElementById('place_of_birth').value.trim(),
+        age:            document.getElementById('age').value
+      };
+
+      if (!data.full_name || !data.dob || !data.place_of_birth || !data.age) {
+        showToast('Saare fields bharo pehle!', 'error');
+        return;
+      }
+
+      btn.classList.add('loading');
+      btn.textContent = 'Saving...';
+
+      try {
+        const res  = await fetch('/api/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+
+        if (json.success) {
+          showToast(json.message, 'success');
+          ['full_name','dob','place_of_birth','age'].forEach(id => document.getElementById(id).value = '');
+          loadUsers();
+        } else {
+          showToast(json.message, 'error');
+        }
+      } catch(e) {
+        showToast('Network error: ' + e.message, 'error');
+      } finally {
+        btn.classList.remove('loading');
+        btn.textContent = '⚡ Save Profile to Database';
+      }
+    }
+
+    async function loadUsers() {
+      try {
+        const res   = await fetch('/api/users');
+        const users = await res.json();
+        const tbody = document.getElementById('userTable');
+        document.getElementById('total-count').textContent = users.length;
+
+        if (users.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" class="empty-state">Koi record nahi mila</td></tr>';
+          return;
+        }
+
+        tbody.innerHTML = users.map(u => `
+          <tr>
+            <td><span class="id-badge">#${u.id}</span></td>
+            <td>${u.full_name}</td>
+            <td>${u.dob}</td>
+            <td>${u.place_of_birth}</td>
+            <td>${u.age} yrs</td>
+          </tr>
+        `).join('');
+      } catch(e) {
+        console.error('Load users failed:', e);
+      }
+    }
+
+    // Auto-fill age from DOB
+    document.getElementById('dob').addEventListener('change', function() {
+      const dob  = new Date(this.value);
+      const now  = new Date();
+      let age    = now.getFullYear() - dob.getFullYear();
+      const m    = now.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) age--;
+      if (age > 0) document.getElementById('age').value = age;
+    });
+
+    // Load on start
+    loadUsers();
+  </script>
+</body>
+</html>
