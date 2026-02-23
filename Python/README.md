@@ -57,7 +57,7 @@ python app.py
 
 | Variable    | Default      | Description       |
 |-------------|--------------|-------------------|
-| DB_HOST     | db           | MySQL host        |
+| DB_HOST     | mysql        | MySQL host        |
 | DB_PORT     | 3306         | MySQL port        |
 | DB_USER     | appuser      | MySQL username    |
 | DB_PASSWORD | apppassword  | MySQL password    |
