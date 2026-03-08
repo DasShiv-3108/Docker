@@ -7,7 +7,7 @@ import time
 app = Flask(__name__)
 
 DB_CONFIG = {
-    'host':     os.environ.get('DB_HOST', 'mysql'),
+    'host':     os.environ.get('DB_HOST', 'mysql_db'),
     'port':     int(os.environ.get('DB_PORT', 3306)),
     'user':     os.environ.get('DB_USER', 'appuser'),
     'password': os.environ.get('DB_PASSWORD', 'apppassword'),
