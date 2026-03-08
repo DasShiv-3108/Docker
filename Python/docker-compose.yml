@@ -1,0 +1,30 @@
+version: "3"
+services:
+
+  flask:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql_db
+    networks:
+      - two_tier_net
+
+  mysql_db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: userprofiles
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - two_tier_net
+
+networks:
+  two_tier_net:
+volumes:
+  dbdata:
