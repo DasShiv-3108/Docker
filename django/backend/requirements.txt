@@ -1,3 +1,0 @@
-django
-mysql-connector-python
-django-cors-headers
