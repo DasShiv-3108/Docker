@@ -26,6 +26,7 @@ jobs:
 #Job 2 - Build 
 
   Build:
+    needs: Code
     runs-on: ubuntu-latest
 
     steps:
@@ -36,6 +37,7 @@ jobs:
 #Job 3 - Test
 
   Test:
+    needs: Build  
     runs-on: ubuntu-latest
     
     steps:
@@ -46,6 +48,7 @@ jobs:
 #Job 4 - Deploy
 
   Deploy:
+    needs: Test
     runs-on: ubuntu-latest
 
     steps:
