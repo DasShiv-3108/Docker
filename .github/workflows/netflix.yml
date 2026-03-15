@@ -1,0 +1,54 @@
+name: netflix_clone
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'netflix-clone/**' 
+  workflow_dispatch:
+
+jobs:
+ 
+
+#Job 1 - Build
+
+  Code:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout the Code
+        run: |
+          echo "Code checkout ho raha hai"
+
+
+#Job 2 - Build 
+
+  Build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build the Code
+        run: |
+          echo "Code Build ho raha hai"
+
+#Job 3 - Test
+
+  Test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Test ho raha hai
+        run: |
+          echo "Test ho raha hai"
+
+#Job 4 - Deploy
+
+  Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy ho raha hai
+        run: |
+          echo "Deploy ho raha hai"
